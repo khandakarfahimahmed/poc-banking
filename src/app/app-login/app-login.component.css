@@ -70,3 +70,9 @@ section {
   /* padding-bottom: 222px; */
   margin-top: 0px;
 }
+.header {
+  display: flex;
+}
+form {
+  padding-left: 10px;
+}

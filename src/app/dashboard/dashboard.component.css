@@ -37,6 +37,9 @@ button {
   background-color: #ff4d4d;
   color: white;
   border: none;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
 }
 .image,
 img {

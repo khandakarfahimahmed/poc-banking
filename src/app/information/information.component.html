@@ -1,1 +1,98 @@
-<p>information works!</p>
+<div id="container">
+  <div id="form">
+    <h1 style="margin-top: 0px">VIEW CUSTOMER PROFILE</h1>
+    <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+      <div class="input">
+        <div>
+          <label for="first">First Name: </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="firstName"
+              (focus)="pageChange(3)"
+            />
+            <button (click)="pageChange(3)">Locate</button>
+          </div>
+        </div>
+        <div>
+          <label for="last">Last Name: </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="lastName"
+              (focus)="pageChange(3)"
+            />
+            <button (click)="pageChange(3)">Locate</button>
+          </div>
+        </div>
+      </div>
+      <div class="input">
+        <div>
+          <label for="phone">Contact: </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="mobile"
+              (focus)="pageChange(4)"
+            />
+            <button (click)="pageChange(4)">Locate</button>
+          </div>
+        </div>
+        <div>
+          <label style="padding-right: 28px" for="nid">NID: </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="nid"
+              (focus)="pageChange(4)"
+            />
+            <button (click)="pageChange(4)">Locate</button>
+          </div>
+        </div>
+      </div>
+      <div class="input">
+        <div>
+          <label style="padding-right: 100px" for="email">Email: </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="email"
+              (focus)="pageChange(3)"
+            />
+            <button (click)="pageChange(3)">Locate</button>
+          </div>
+        </div>
+        <div>
+          <label style="padding-right: 70px" for="address"
+            >Permanent Address:
+          </label>
+          <div class="field">
+            <input
+              type="text"
+              id="first"
+              formControlName="address"
+              (focus)="pageChange(4)"
+            />
+            <button (click)="pageChange(4)">Locate</button>
+          </div>
+        </div>
+        <button
+          routerLink="/userlist"
+          type="submit"
+          [disabled]="infoForm.invalid"
+          [ngClass]="infoForm.valid ? 'enabled-btn' : 'disabled-btn'"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  <div id="file">
+    <app-example-pdf-viewer [page]="currentPage"></app-example-pdf-viewer>
+  </div>
+</div>

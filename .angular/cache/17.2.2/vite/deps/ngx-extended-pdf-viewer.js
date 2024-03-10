@@ -1,12 +1,12 @@
 import {
+  DomSanitizer
+} from "./chunk-6TYWIZVQ.js";
+import "./chunk-4T6A6RBS.js";
+import {
   FormsModule,
   NgSelectOption,
   ɵNgSelectMultipleOption
 } from "./chunk-CI54B2VG.js";
-import {
-  DomSanitizer
-} from "./chunk-6TYWIZVQ.js";
-import "./chunk-4T6A6RBS.js";
 import {
   AsyncPipe,
   CommonModule,
