@@ -1,0 +1,65 @@
+<div>
+  <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="step === 1" class="step">
+      <div class="input">
+        <div>
+          <label for="first">First Name: </label>
+          <input type="text" id="first" formControlName="firstName" />
+        </div>
+        <div>
+          <label for="last">Last Name: </label>
+          <input type="text" id="last" formControlName="lastName" />
+        </div>
+        <button type="submit" (click)="nextStepControl()">Next</button>
+      </div>
+      <div class="image">
+        <img src="../../assets/images/1.png" alt="image" />
+      </div>
+    </div>
+    <div *ngIf="step === 2" class="step">
+      <div class="input">
+        <div>
+          <label for="phone">Contact: </label>
+          <input type="text" id="phone" formControlName="mobile" />
+        </div>
+        <div>
+          <label style="padding-right: 28px" for="nid">NID: </label>
+          <input type="text" id="nid" formControlName="nid" />
+        </div>
+        <div class="btn">
+          <button type="button" (click)="prevStepControl()">Previous</button>
+          <button type="submit" (click)="nextStepControl()">Next</button>
+        </div>
+      </div>
+      <div class="image">
+        <img src="../../assets/images/2.png" alt="image" />
+      </div>
+    </div>
+    <div *ngIf="step === 3" class="step">
+      <div class="input">
+        <div>
+          <label style="padding-right: 100px" for="email">Email: </label>
+          <input type="text" id="email" formControlName="email" />
+        </div>
+        <div>
+          <label style="padding-right: 70px" for="address"
+            >Permanent <br />Address:
+          </label>
+          <input type="text" id="address" formControlName="address" />
+        </div>
+        <div class="btn">
+          <button type="button" (click)="prevStepControl()">Previous</button>
+          <button routerLink="/userlist" type="submit">Submit</button>
+        </div>
+      </div>
+      <div class="image">
+        <img src="../../assets/images/3.png" alt="image" />
+      </div>
+    </div>
+    <!-- <div *ngIf="step === 4" class="step">
+      <div class="image">
+        <img src="../../" alt="image" />
+      </div>
+    </div> -->
+  </form>
+</div>
