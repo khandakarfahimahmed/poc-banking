@@ -41,9 +41,12 @@ button {
   align-items: center;
   padding-bottom: 30px;
 }
-.image,
+.image {
+  width: 45vw;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 img {
-  width: 45dvw;
-  /* background-color: blue; */
-  height: 90dvh;
+  width: 100%;
+  height: auto;
 }

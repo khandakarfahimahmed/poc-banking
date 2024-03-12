@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
-  selector: "app-root",
-  templateUrl: "./dashboard.component.html",
-  styleUrl: "./dashboard.component.css",
+  selector: 'app-root',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
   step = 1;
@@ -11,16 +11,16 @@ export class DashboardComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.applicationForm = this.fb.group({
-      firstName: this.fb.control("Mehedi", Validators.required),
-      lastName: this.fb.control("Hasan", Validators.required),
-      mobile: this.fb.control("01785519804", [
+      firstName: this.fb.control('Mehedi', Validators.required),
+      lastName: this.fb.control('Hasan', Validators.required),
+      mobile: this.fb.control('01785519804', [
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
       ]),
-      nid: this.fb.control("5555995116", Validators.required),
-      address: this.fb.control("Muradnagar,Cumilla"),
-      email: this.fb.control("mehedisasm@gmail.com", [
+      nid: this.fb.control('5555995116', Validators.required),
+      address: this.fb.control('Muradnagar,Cumilla'),
+      email: this.fb.control('mehedisasm@gmail.com', [
         Validators.required,
         Validators.email,
       ]),

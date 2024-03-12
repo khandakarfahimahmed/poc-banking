@@ -18,3 +18,10 @@
 .info-item h5 {
   margin-right: 5px;
 }
+
+hr {
+  border: none; /* Remove default border */
+  height: 1px; /* Set height */
+  background-color: #ccc; /* Set background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow border */
+}
