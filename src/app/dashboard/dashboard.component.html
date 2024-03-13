@@ -10,12 +10,30 @@
           <label for="last">Last Name: </label>
           <input type="text" id="last" formControlName="lastName" />
         </div>
-        <button type="submit" (click)="nextStepControl()">Next</button>
+        <button
+          type="submit"
+          (click)="nextStepControl()"
+          [disabled]="
+            applicationForm.get('firstName')?.invalid ||
+            applicationForm.get('lastName')?.invalid
+          "
+          [ngClass]="
+            !(
+              applicationForm.get('firstName')?.invalid ||
+              applicationForm.get('lastName')?.invalid
+            )
+              ? 'enabled-btn'
+              : 'disabled-btn'
+          "
+        >
+          Next
+        </button>
       </div>
       <div class="image">
         <img src="../../assets/images/1.png" alt="image" />
       </div>
     </div>
+
     <div *ngIf="step === 2" class="step">
       <div class="input">
         <div>
@@ -27,14 +45,46 @@
           <input type="text" id="nid" formControlName="nid" />
         </div>
         <div class="btn">
-          <button type="button" (click)="prevStepControl()">Previous</button>
-          <button type="submit" (click)="nextStepControl()">Next</button>
+          <button
+            type="submit"
+            (click)="prevStepControl()"
+            [disabled]="
+              applicationForm.get('mobile')?.valid &&
+              applicationForm.get('nid')?.valid
+            "
+            [ngClass]="
+              applicationForm.get('mobile')?.invalid ||
+              applicationForm.get('nid')?.invalid
+                ? 'enabled-btn'
+                : 'disabled-btn'
+            "
+          >
+            Previous
+          </button>
+
+          <button
+            type="submit"
+            (click)="nextStepControl()"
+            [disabled]="
+              applicationForm.get('mobile')?.invalid ||
+              applicationForm.get('nid')?.invalid
+            "
+            [ngClass]="
+              applicationForm.get('mobile')?.valid &&
+              applicationForm.get('nid')?.valid
+                ? 'enabled-btn'
+                : 'disabled-btn'
+            "
+          >
+            Next
+          </button>
         </div>
       </div>
       <div class="image">
         <img src="../../assets/images/2.png" alt="image" />
       </div>
     </div>
+
     <div *ngIf="step === 3" class="step">
       <div class="input">
         <div>
@@ -48,18 +98,27 @@
           <input type="text" id="address" formControlName="address" />
         </div>
         <div class="btn">
-          <button type="button" (click)="prevStepControl()">Previous</button>
-          <button routerLink="/userlist" type="submit">Submit</button>
+          <button
+            type="submit"
+            (click)="prevStepControl()"
+            [disabled]="applicationForm.valid"
+            [ngClass]="applicationForm.invalid ? 'enabled-btn' : 'disabled-btn'"
+          >
+            Previous
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="applicationForm.invalid"
+            [ngClass]="applicationForm.valid ? 'enabled-btn' : 'disabled-btn'"
+          >
+            Submit
+          </button>
         </div>
       </div>
       <div class="image">
         <img src="../../assets/images/3.png" alt="image" />
       </div>
     </div>
-    <!-- <div *ngIf="step === 4" class="step">
-      <div class="image">
-        <img src="../../" alt="image" />
-      </div>
-    </div> -->
   </form>
 </div>

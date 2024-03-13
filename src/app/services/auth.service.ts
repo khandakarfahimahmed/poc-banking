@@ -13,12 +13,14 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-      tap((response) => {
-        // Store JWT token in local storage
-        localStorage.setItem('token', response.token);
-      })
-    );
+    return this.http
+      .post<any>(`${this.apiUrl}/login`, credentials, { withCredentials: true })
+      .pipe(
+        tap((response) => {
+          // Store JWT token in local storage
+          localStorage.setItem('token', response.token);
+        })
+      );
   }
 
   logout(): void {

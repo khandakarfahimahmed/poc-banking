@@ -1,49 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import { HostListener } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from '../Validators/noSpaceAllowed.validator';
+import { FileUploadService } from '../services/file-upload.service';
+
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
   styleUrl: './information.component.css',
 })
 export class InformationComponent implements OnInit {
-  key: string = '';
   currentPage: number = 1;
+  receivedData: any;
+
   infoForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private fileUploadService: FileUploadService
+  ) {
+    this.fileUploadService.data$.subscribe((data) => {
+      this.receivedData = data;
+    });
+  }
+
   ngOnInit() {
     this.infoForm = this.fb.group({
-      firstName: this.fb.control('Mehedi', Validators.required),
-      lastName: this.fb.control('Hasan', Validators.required),
-      mobile: this.fb.control('01785519804', [
+      firstName: this.fb.control(this.receivedData.firstName, [
+        Validators.required,
+        CustomValidators.noSpaceAllowed,
+      ]),
+      lastName: this.fb.control(this.receivedData.lastName, [
+        Validators.required,
+        CustomValidators.noSpaceAllowed,
+      ]),
+      mobile: this.fb.control(this.receivedData.mobile, [
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
+        CustomValidators.noSpaceAllowed,
       ]),
-      nid: this.fb.control('5555995116', Validators.required),
-      address: this.fb.control('Muradnagar,Cumilla', Validators.required),
-      email: this.fb.control('mehedisasm@gmail.com', [
+      nid: this.fb.control(this.receivedData.nid, [
+        Validators.required,
+        CustomValidators.noSpaceAllowed,
+      ]),
+      address: this.fb.control(this.receivedData.address, Validators.required),
+      email: this.fb.control(this.receivedData.email, [
         Validators.required,
         Validators.email,
+        CustomValidators.noSpaceAllowed,
       ]),
     });
   }
 
-  @HostListener('document:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    this.key = event.key;
-    console.log(this.key);
-    if (event.key === 't') {
-      // event.preventDefault();
-      this.pageChange(4);
-      console.log(this.key);
-    }
+  keyPress(event: Event) {
+    this.pageChange(4);
   }
+
   pageChange(page: number) {
     this.currentPage = page;
   }

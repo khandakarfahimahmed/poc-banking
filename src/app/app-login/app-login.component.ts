@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http'; // Import HttpClient
 import { AuthService } from '../services/auth.service';
@@ -24,6 +24,7 @@ export class AppLoginComponent {
       username: this.username,
       password: this.password,
     };
+    console.log(formData);
 
     // Make HTTP POST request to your server
     this.http.post('/login', formData).subscribe(
