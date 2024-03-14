@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../Validators/noSpaceAllowed.validator';
 import { FileUploadService } from '../services/file-upload.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './dashboard.component.html',
@@ -14,10 +15,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private fileUploadService: FileUploadService,
-    private router: Router
+    private router: Router,
+    private userService: AuthService //new
   ) {}
 
   ngOnInit(): void {
+    this.userService.dashboard(); //new
     this.applicationForm = this.fb.group({
       firstName: this.fb.control('Mehedi', [
         Validators.required,

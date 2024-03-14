@@ -9,15 +9,10 @@
       <h2 style="padding-left: 19px">Login</h2>
     </div>
 
-    <form>
+    <form #login="ngForm" (ngSubmit)="userLogin(login.value)">
       <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="username"
-        />
+        <label for="email">Username</label>
+        <input type="text" id="username" name="email" [(ngModel)]="username" />
       </div>
 
       <div class="form-group">
@@ -30,14 +25,8 @@
         />
       </div>
 
-      <button
-        routerLink="/dashboard"
-        (click)="login()"
-        type="submit"
-        class="btn btn-primary"
-      >
-        Log In
-      </button>
+      <button type="submit" class="btn btn-primary">Log In</button>
+      <!-- routerLink="/dashboard" -->
     </form>
   </div>
   <div class="image-container">

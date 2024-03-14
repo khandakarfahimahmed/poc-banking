@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
     "animejs": "^3.2.2",
+    "jsonwebtoken": "^9.0.2",
     "ngx-extended-pdf-viewer": "^19.4.0-alpha.2",
     "pdfjs-dist": "^4.0.379",
     "pspdfkit": "^2024.2.0",
