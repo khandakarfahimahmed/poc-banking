@@ -24,7 +24,13 @@
               id="first"
               formControlName="firstName"
               (focus)="pageChange(3)"
-              (focus)="toggleName(false)"
+              (focus)="
+                toggleName(false);
+                toggleNid(true);
+                toggleContact(true);
+                toggleEmail(true);
+                togglePermanentAddress(true)
+              "
             />
             <!-- <button (click)="pageChange(3)">Locate</button> -->
           </div>
@@ -37,7 +43,14 @@
               type="text"
               id="first"
               formControlName="lastName"
-              (focus)="pageChange(3); toggleName(false)"
+              (focus)="
+                pageChange(3);
+                toggleNid(true);
+                toggleName(false);
+                toggleContact(true);
+                toggleEmail(true);
+                togglePermanentAddress(true)
+              "
             />
             <!-- <button (click)="pageChange(3)">Locate</button> -->
           </div>
@@ -46,24 +59,64 @@
       <div class="input">
         <div>
           <label for="phone">Contact: </label>
+          <div
+            *ngIf="showContact"
+            style="
+              height: 38px;
+              width: 130px;
+              border: solid 4px red;
+              margin-left: 69.3dvw;
+              margin-top: -4.3dvw;
+              position: fixed;
+              overflow: absolute;
+              z-index: 1;
+            "
+          ></div>
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="mobile"
-              (focus)="pageChange(4)"
+              (focus)="
+                pageChange(4);
+                toggleContact(false);
+                toggleName(true);
+                toggleNid(true);
+                toggleEmail(true);
+                togglePermanentAddress(true)
+              "
             />
             <!-- <button (click)="pageChange(4)">Locate</button> -->
           </div>
         </div>
         <div>
           <label style="padding-right: 28px" for="nid">NID: </label>
+          <div
+            *ngIf="showNid"
+            style="
+              height: 43px;
+              width: 260px;
+              border: solid 4px red;
+              margin-left: 57dvw;
+              margin-top: 0dvw;
+              position: fixed;
+              overflow: absolute;
+              z-index: 1;
+            "
+          ></div>
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="nid"
-              (focus)="pageChange(4)"
+              (focus)="
+                pageChange(4);
+                toggleNid(false);
+                toggleContact(true);
+                toggleName(true);
+                toggleEmail(true);
+                togglePermanentAddress(true)
+              "
             />
             <!-- <button (click)="pageChange(4)">Locate</button> -->
           </div>
@@ -72,12 +125,32 @@
       <div class="input">
         <div>
           <label style="padding-right: 100px" for="email">Email: </label>
+          <div
+            *ngIf="showEmail"
+            style="
+              height: 38px;
+              width: 150px;
+              border: solid 4px red;
+              margin-left: 76.7dvw;
+              margin-top: -16dvw;
+              position: fixed;
+              overflow: absolute;
+              z-index: 1;
+            "
+          ></div>
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="email"
-              (focus)="pageChange(3)"
+              (focus)="
+                pageChange(4);
+                toggleNid(true);
+                toggleContact(true);
+                toggleName(true);
+                toggleEmail(false);
+                togglePermanentAddress(true)
+              "
             />
             <!-- <button (click)="pageChange(3)">Locate</button> -->
           </div>
@@ -86,17 +159,45 @@
           <label style="padding-right: 70px" for="address"
             >Permanent Address:
           </label>
+          <div
+            *ngIf="showPermanentAddress"
+            style="
+              height: 64px;
+              width: 460px;
+              border: solid 6px red;
+              margin-left: 56.6dvw;
+              margin-top: -20.4dvw;
+              position: fixed;
+              overflow: absolute;
+              z-index: 1;
+            "
+          ></div>
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="address"
-              (focus)="pageChange(4)"
+              (focus)="
+                pageChange(4);
+                toggleNid(true);
+                toggleContact(true);
+                toggleName(true);
+                toggleEmail(true);
+                togglePermanentAddress(false)
+              "
             />
             <!-- <button (click)="pageChange(4)">Locate</button> -->
           </div>
         </div>
         <button
+          (focus)="
+            pageChange(4);
+            toggleNid(true);
+            toggleContact(true);
+            toggleName(true);
+            toggleEmail(true);
+            togglePermanentAddress(true)
+          "
           routerLink="/userlist"
           type="submit"
           [disabled]="infoForm.invalid"

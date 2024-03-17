@@ -13,6 +13,10 @@ export class InformationComponent implements OnInit {
   receivedData: any;
   source!: string | Blob;
   showName: boolean = false;
+  showContact: boolean = false;
+  showNid: boolean = false;
+  showEmail: boolean = false;
+  showPermanentAddress: boolean = false;
 
   infoForm!: FormGroup;
   constructor(
@@ -68,5 +72,17 @@ export class InformationComponent implements OnInit {
   }
   toggleName(val: boolean): void {
     this.showName = !val;
+  }
+  toggleContact(val: boolean): void {
+    this.showContact = !val;
+  }
+  toggleNid(val: boolean): void {
+    this.showNid = !val;
+  }
+  toggleEmail(val: boolean): void {
+    this.showEmail = !val;
+  }
+  togglePermanentAddress(val: boolean): void {
+    this.showPermanentAddress = !val;
   }
 }
