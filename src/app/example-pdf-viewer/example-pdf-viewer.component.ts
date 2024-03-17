@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Input,
   ViewChild,
+  OnInit,
 } from '@angular/core';
 import {
   NgxExtendedPdfViewerService,
@@ -16,7 +17,7 @@ import {
   styleUrls: ['./example-pdf-viewer.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExamplePdfViewerComponent {
+export class ExamplePdfViewerComponent implements OnInit {
   /** In most cases, you don't need the NgxExtendedPdfViewerService. It allows you
    *  to use the "find" api, to extract text and images from a PDF file,
    *  to print programmatically, and to show or hide layers by a method call.
@@ -26,6 +27,9 @@ export class ExamplePdfViewerComponent {
 
   @Input() page = 1;
   @Input() source!: string | Blob;
+  ngOnInit(): void {
+    // this.source = '/assets/sample.pdf';
+  }
   constructor(private pdfService: NgxExtendedPdfViewerService) {
     /* More likely than not you don't need to tweak the pdfDefaultOptions.
        They are a collecton of less frequently used options.

@@ -20,8 +20,9 @@ h1 {
   color: #157ac6;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 80px;
-  padding-bottom: 30px;
+  /* margin-bottom: 80px; */
+  padding-bottom: 12dvh;
+  padding-left: 10dvw;
 }
 
 input {
@@ -60,6 +61,8 @@ button:focus {
 }
 
 #file {
+  margin-top: auto;
+  display: inline;
   width: 45vw;
   height: 90vh;
   background-color: #f7fafc;

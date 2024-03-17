@@ -11,6 +11,8 @@ import { FileUploadService } from '../services/file-upload.service';
 export class InformationComponent implements OnInit {
   currentPage: number = 1;
   receivedData: any;
+  source!: string | Blob;
+  showName: boolean = false;
 
   infoForm!: FormGroup;
   constructor(
@@ -23,27 +25,30 @@ export class InformationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.source = '/assets/sample.pdf';
     this.infoForm = this.fb.group({
-      firstName: this.fb.control(this.receivedData.firstName, [
+      firstName: this.fb.control(this.receivedData.firstName || 'Mehedi', {
+        validators: [Validators.required, CustomValidators.noSpaceAllowed],
+      }),
+      lastName: this.fb.control(this.receivedData.lastName || 'Hossain', [
         Validators.required,
         CustomValidators.noSpaceAllowed,
       ]),
-      lastName: this.fb.control(this.receivedData.lastName, [
-        Validators.required,
-        CustomValidators.noSpaceAllowed,
-      ]),
-      mobile: this.fb.control(this.receivedData.mobile, [
+      mobile: this.fb.control(this.receivedData.mobile || '01711111111', [
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
         CustomValidators.noSpaceAllowed,
       ]),
-      nid: this.fb.control(this.receivedData.nid, [
+      nid: this.fb.control(this.receivedData.nid || '1234567890', [
         Validators.required,
         CustomValidators.noSpaceAllowed,
       ]),
-      address: this.fb.control(this.receivedData.address, Validators.required),
-      email: this.fb.control(this.receivedData.email, [
+      address: this.fb.control(
+        this.receivedData.address || 'Dhaka',
+        Validators.required
+      ),
+      email: this.fb.control(this.receivedData.email || 'fahim@123', [
         Validators.required,
         Validators.email,
         CustomValidators.noSpaceAllowed,
@@ -60,5 +65,8 @@ export class InformationComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.infoForm.value);
+  }
+  toggleName(val: boolean): void {
+    this.showName = !val;
   }
 }

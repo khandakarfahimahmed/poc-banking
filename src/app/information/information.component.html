@@ -5,24 +5,39 @@
       <div class="input">
         <div>
           <label for="first">First Name: </label>
+          <div
+            *ngIf="showName"
+            style="
+              height: 45px;
+              width: 468px;
+              border: solid 4px red;
+              margin-left: 57dvw;
+              margin-top: 29.7dvw;
+              position: fixed;
+              overflow: absolute;
+              z-index: 1;
+            "
+          ></div>
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="firstName"
               (focus)="pageChange(3)"
+              (focus)="toggleName(false)"
             />
             <!-- <button (click)="pageChange(3)">Locate</button> -->
           </div>
         </div>
         <div>
           <label for="last">Last Name: </label>
+
           <div class="field">
             <input
               type="text"
               id="first"
               formControlName="lastName"
-              (focus)="pageChange(3)"
+              (focus)="pageChange(3); toggleName(false)"
             />
             <!-- <button (click)="pageChange(3)">Locate</button> -->
           </div>
@@ -93,6 +108,9 @@
     </form>
   </div>
   <div id="file">
-    <app-example-pdf-viewer [page]="currentPage"></app-example-pdf-viewer>
+    <app-example-pdf-viewer
+      [source]="source"
+      [page]="currentPage"
+    ></app-example-pdf-viewer>
   </div>
 </div>

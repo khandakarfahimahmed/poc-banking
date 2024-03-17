@@ -1,0 +1,32 @@
+/* app.component.css */
+.btn {
+  position: absolute; /* Position the button */
+  top: 10px; /* Adjust top position */
+  right: 20px; /* Adjust right position */
+  margin-bottom: 20px;
+}
+
+/* Style for the logout button */
+.logout-button {
+  background-color: #547793; /* Red color for the button */
+  color: #fff; /* White text color */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Cursor style */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  display: flex; /* Display as flex */
+  align-items: center; /* Center the icon */
+  justify-content: center; /* Center the icon */
+}
+
+/* Hover effect for the button */
+.logout-button:hover {
+  background-color: #425c81; /* Darker red on hover */
+}
+
+/* Style for the icon inside the button */
+.logout-button i {
+  margin-right: 8px; /* Margin between icon and text */
+}

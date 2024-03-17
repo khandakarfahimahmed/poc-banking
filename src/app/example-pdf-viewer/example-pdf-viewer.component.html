@@ -6,14 +6,14 @@
   #pdfViewer
   [customFindbarInputArea]="customFindbarInputArea"
   [customFindbarButtons]="customFindbarButtons"
-  src="../../assets/sample.pdf"
+  [(src)]="source"
   [textLayer]="true"
   pageViewMode="multiple"
   [(page)]="page"
   [spread]="spreadMode"
   [height]="'auto'"
   [minZoom]="0.5"
-  [maxZoom]="0.7"
+  [maxZoom]="0.9"
 >
 </ngx-extended-pdf-viewer>
 <ng-template #customFindbarInputArea>

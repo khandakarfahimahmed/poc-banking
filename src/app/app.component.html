@@ -3,7 +3,14 @@
 
   <section class="content">
     <!-- <app-dashboard></app-dashboard> -->
-    <button (click)="logout()">logout</button>
+    <div class="btn">
+      <div *ngIf="showLogoutButton()" class="btn">
+        <button class="logout-button" (click)="logout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+        </button>
+      </div>
+    </div>
+
     <router-outlet></router-outlet>
   </section>
 </main>
